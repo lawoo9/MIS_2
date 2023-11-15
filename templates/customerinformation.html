@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name ="keywords" content ="HTML 5, CSS 3, JavaScript, jquery, Angularjs"/>
+<meta name ="description" content ="Dynamic web development">
+<meta name = "author" content ="lawrence">
+<meta name = "viewport" content ="width=device-width,initial-scale=1.0">
+<title>float Layout</title>
+<link rel ="stylesheet" href ="font-awesome/css/font-awesome.min.css"/>
+<link rel ="stylesheet" href ="css/main.css">
+<style>
+    span{
+    color :red;
+    }
+
+    body{
+            background-color:white;
+    }
+
+    input{
+        width:10%;
+        padding: 12px;
+        margin: 8px;
+        border: none;
+        border-top: 3px solid blue;
+        border-bottom: 3px solid red;
+        background-color: green;
+        color: black;
+        text-align: center;
+
+    }
+
+    h1{
+        color:blueviolet;
+        text-align: center;
+    }
+h2{
+    color:red;
+    text-align: center;
+}
+
+label{
+    color:aqua;
+    text-align: center;
+}
+
+p{
+    color:brown;
+    text-align: center;
+}
+
+footer{
+    color:red;
+    text-align: center;
+}
+
+h3{
+    color:aquamarine;
+    text-align: center;
+}
+
+
+header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 30px 10%;
+        }
+ 
+        .navigate_links {
+            list-style: none;
+        }
+ 
+        .navigate_links li {
+            display: inline-block;
+            padding: 10px 20px;
+        }
+ 
+        .navigate_links li a {
+            transition: all 0.3s ease-in-out 0s;
+        }
+ 
+        /* Add some transition to make navigation
+           bar attractive */
+        .navigate_links li a:hover {
+            color: greenyellow;
+            border: 2px solid blue;
+            box-shadow: 3px 3px 3px red, 3px 3px 3px blue;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 12px;
+        }
+
+        a{
+	text-decoration: none;
+}
+
+
+</style>
+</head>
+<body>
+    <header>
+    
+        <nav>
+            <ul class="navigate_links">
+                <ul class="navigate_links">
+                    <li><a href ="employeerecords.html">Next</a></li>
+                  </ul>   
+                
+              </ul>   
+    </nav>
+    </header>      
+<article>
+    <h1>CUSTOMER INFORMATION FORM (MIS)</h1>
+    <form>
+        <label for ="lastname">Customer Lastname:</label>
+        <input id ="lastname" name ="lastname" type ="text"/>
+        <label for ="firstname">Customer Firstname:</label>
+        <input id ="firstname" name ="firstname" type ="text"/>
+        <label for ="middlename">Customer middlename:</label>
+        <input id ="middlename" name ="middlename" type ="text"/><br/>
+        <label for="dob">Date Of Birth</label>
+        <input type ="date" id ="dob" name ="dob">
+        <label for = "datetime">Customer Estimated delivery date</label>
+        <input type ="datetime-local" name ="datetime" id="datetime"/>
+        <label for ="address">Customer Address:</label>
+        <input id ="address" name ="address" type ="text"/>
+        <label for ="city">Residency:</label>
+        <input id ="city" name ="city" type ="text"/>
+        <label for ="state">State:</label>
+        <input id ="state" name ="state" type ="text"/>
+        <label for ="zip">zip:</label>
+        <input id ="zip" name ="zip" type ="text"/><br/>
+        <label for ="tel">Customer telephone Number</label>
+        <input type = "tel" name ="tel" id ="tel"/>
+        <label>Customer type of insurance:</label>
+        <input type ="radio" name ="Customer type of insurance" value ="private" id ="private">
+        <label for ="private">private</label>
+        <input type ="radio" name ="Customer type of insurance" value ="medicaid" id ="medicaid">
+        <label for ="medicaid">medicaid</label>
+        <input type ="radio" name ="Customer type of insurance" value ="medicare" id ="medicare">
+        <label for ="medicare">medicare</label>
+        <input type ="radio" name ="Customer type of insurance" value ="uninsured" id ="uninsured">
+        <label for ="uninsured">uninsured</label>
+        <input type ="radio" name ="Customer type of insurance" value ="unknown" id ="unknown">
+        <label for ="unknown">unknown</label><br/>
+        <label>Race:</label><br/>
+        <input type ="radio" name ="race" value ="American Indian/Alaskan Native" id ="American Indian/Alaskan Native">
+        <label for ="American Indian/Alaskan Native">American Indian/Alaskan Native</label>
+        <input type ="radio" name ="race" value ="Native Hawaiian/Pacific Islander" id ="Native Hawaiian/Pacific Islander">
+        <label for ="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander</label>
+        <input type ="radio" name ="race" value ="Asian" id ="Asian">
+        <label for ="Asian">Asian</label> 
+        <input type ="radio" name ="race" value ="White" id ="White">
+        <label for ="White">White</label>
+        <input type ="radio" name ="race" value ="Black/African Am." id ="Black/African Am.">
+        <label for ="Black/African Am.">Black/African Am.</label>
+        <input type ="radio" name ="race" value ="Unk" id ="Unk">
+        <label for ="Unk">Unk</label>
+        <input type ="radio" name ="race" value ="Other" id ="Other">
+        <label for ="Other">Other</label><br/>
+        <label>Hispanic:</label><br/>
+        <input type ="radio" name ="hispanic" value ="yes" id ="yes">
+        <label for ="Yes">Yes</label>
+        <input type ="radio" name ="hispanic" value ="No" id ="No">
+        <label for ="No">No</label>
+        <input type ="radio" name ="hispanic" value ="unk" id ="unk">
+        <label for ="unk">unk</label><br/>
+        <label for ="Country of Birth">Country of Birth:</label>
+        <input id ="Country of Birth" name ="Country of Birth" type ="text"/>
+        <label for ="primary Language">Customer Primary Language:</label>
+        <input id ="primary language" name ="primary language" type ="text"/><br/>
+        <label for ="check if interpreter is needed">check if interpreter is needed</label>
+        <input type ="radio" name ="check if interpreter is needed" value ="check if interpreter is needed" id ="check if interpreter is needed"><br/>
+    
+
+</form>
+</article>
+<aside>
+    <h2>GUARANTOR INFORMATION</h2>
+<form>
+    <label for ="address">Address:</label>
+    <input id ="address" name ="address" type ="text"/>
+    <label for ="city">city:</label>
+    <input id ="city" name ="city" type ="text"/>
+    <label for ="state">State:</label>
+    <input id ="state" name ="state" type ="text"/>
+    <label for ="zip">zip:</label>
+    <input id ="zip" name ="zip" type ="text"/><br/>
+    <label for ="tel">telephone</label>
+    <input type = "tel" name ="tel" id ="tel"/>   
+
+</form>
+</aside>
+<details>
+<summary>read more</summary> 
+<label>type of insurance:</label>
+        <input type ="radio" name ="type of insurance" value ="private" id ="private">
+        <label for ="private">private</label>
+        <input type ="radio" name ="type of insurance" value ="medicaid" id ="medicaid">
+        <label for ="medicaid">medicaid</label>
+        <input type ="radio" name ="type of insurance" value ="medicare" id ="medicare">
+        <label for ="medicare">medicare</label>
+        <input type ="radio" name ="type of insurance" value ="uninsured" id ="uninsured">
+        <label for ="uninsured">uninsured</label>
+        <input type ="radio" name ="type of insurance" value ="unknown" id ="unknown">
+        <label for ="unknown">unknown</label><br/>
+        <label>Race:</label><br/>
+        <input type ="radio" name ="race" value ="American Indian/Alaskan Native" id ="American Indian/Alaskan Native">
+        <label for ="American Indian/Alaskan Native">American Indian/Alaskan Native</label>
+        <input type ="radio" name ="race" value ="Native Hawaiian/Pacific Islander" id ="Native Hawaiian/Pacific Islander">
+        <label for ="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander</label>
+        <input type ="radio" name ="race" value ="Asian" id ="Asian">
+        <label for ="Asian">Asian</label> 
+        <input type ="radio" name ="race" value ="White" id ="White">
+        <label for ="White">White</label>
+        <input type ="radio" name ="race" value ="Black/African Am." id ="Black/African Am.">
+        <label for ="Black/African Am.">Black/African Am.</label>
+        <input type ="radio" name ="race" value ="Unk" id ="Unk">
+        <label for ="Unk">Unk</label>
+        <input type ="radio" name ="race" value ="Other" id ="Other">
+        <label for ="Other">Other</label><br/>
+        <label>Hispanic:</label><br/>
+        <input type ="radio" name ="hispanic" value ="yes" id ="yes">
+        <label for ="Yes">Yes</label>
+        <input type ="radio" name ="hispanic" value ="No" id ="No">
+        <label for ="No">No</label>
+        <input type ="radio" name ="hispanic" value ="unk" id ="unk">
+        <label for ="unk">unk</label><br/>
+        <label for ="Country of Birth">Country of Birth:</label>
+        <input id ="Country of Birth" name ="Country of Birth" type ="text"/>
+        <label for ="primary Language">Primary Language:</label>
+        <input id ="primary language" name ="primary language" type ="text"/><br/>
+        <label for ="check if interpreter is needed">check if interpreter is needed</label>
+        <input type ="radio" name ="check if interpreter is needed" value ="check if interpreter is needed" id ="check if interpreter is needed"><br/>
+    
+
+</details>
+<footer>
+    
+</footer>
+</body>
+</html>
+
