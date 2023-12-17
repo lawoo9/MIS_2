@@ -1,21 +1,18 @@
 {% extends "base.html" %}
-{% block title %}Home - MCSL {% endblock title%}
 {% block head %}
-{{ super() }}
+    <meta name = "description" content="Home page for MIS data collection">
 {% endblock head %}
+{% block title %}<title>Home</title>{% endblock title %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='login.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css')}}">
+{% endblock stylesheets %}
 {% block content %}
-<div align="center">
-<div align="center" class="border">
-<div class="header">
-<h1 class="word">Index</h1>
-</div></br></br></br>
-<h1 class="bottom">
-Hi {{session.username}}!!</br></br>Welcome to management information system...
-</h1></br></br></br>
-<a href="{{ url_for('logout') }}" class="btn">logout</a>
-</div>
+
+<div class="container-fluid mt-3">
+    <h1 class="mt-4">MIS Data Collection and Record System</h1>
+    <p>With the introduction of computers and computer technologies at the various levels of the organization, it has now become possible to transmit large amounts of information across long distances cheaply and without loss of time. 
+        So now information is considered important resources along with other traditional resources like money, materials, men, and machines. So, earlier MIS, which was more manual, was very simple and unrecognized. But nowadays it is a more refined, well-designed computer-based structure which follows the system’s approach. So, we can say Management Information System is the culmination of the very important aspects of Management, Information and System.
+        Management Information System is a system consisting of people, machines, procedures, databases as its element. The system gathers data from the external and internal sources of an organization, processes it and supplies information to assist managers in the process of decision making.</p>
 </div>
 {% endblock content %}
-{% block footer %}
-{{ super() }}
-{% endblock footer %}
