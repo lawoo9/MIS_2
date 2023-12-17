@@ -1,0 +1,1431 @@
+{% extends "homebase.html" %}
+{% block head %}
+    <meta name = "description" content="Home page for MIS data collection">
+{% endblock head %}
+{% block title %}<title>Home</title>{% endblock title %}
+{% block javascripts %}
+<script src = "{{ url_for('static', filename='tabs.js')}}"></script>
+{% endblock javascripts %}
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mt-4">Client data collection profile</h1>
+    <h3>Personal Information</h3>
+    <div id="wrapper2">
+
+        <div id="tabContainer">
+        <div id="tabs">
+            <ul>
+                    <li id="tabHeader_1">Personal Profile</li>
+                    <li id="tabHeader_2">Customer Information</li>
+                    <li id="tabHeader_3">Employee Records</li>
+                    <li id="tabHeader_4">Financial Data</li>
+                    <li id="tabHeader_5">Sales Figure</li>
+                    <li id="tabHeader_6">Inventory Levels</li>
+                    
+    
+
+                                
+            </ul>
+        </div>
+        <div id="tabscontent">
+            
+            <nav class="tabpage" id="tabpage_1">
+                <form method ="post" action ="/update_profile">
+                <p> The retrived data is displayed here</p>
+                <div class ="form-group">
+                    <label for="client_id">Client ID</label>
+                    <input type="text" class="form-control" id="client_id" name="unique_id" value="{{ client.unique_id }}" readonly>
+                </div>
+                <div class ="form-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" value = "{{ client.first_name }}">
+                </div>
+                <div class ="form-group">
+                    <label for="middle_name">Middle Name</label>
+                    <input type="text" class="form-control" id="middle_name" name="middle_name" value = "{{ client.middle_name }}">
+                </div>
+                <div class ="form-group">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" value = "{{ client.last_name}}">
+                </div> 
+    
+                <div class ="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" class="form-control" id="dob" name="dob" value = "{{ client.date_of_birth }}">
+                </div> 
+    
+                <div class ="form-group">
+                    <label for="country-of-birth">Country of birth</label>
+                    <input type="text" class="form-control" id="country-of-birth" name="country_of_birth" value = "{{ client.country_of_birth }}">
+                </div>
+                
+                <div class ="form-group">
+                    <label for="gender">Sex: </label><br/>
+                    <input type="radio"  id="gender" name="gender" value = "{{ client.gender }}" checked>{{ client.gender }}
+                    <input type="radio"  id="gender" name="gender" value = "female"> Female
+                    <input type="radio" id="gender" name="gender" value = "male"> Male
+                    <input type="radio" id="gender" name="gender" value = "intersex"> Intersex
+                </div>
+                <hr/>
+                <div class ="form-group">
+                    <label for="marital-status">Marital Status:</label><br/>
+                    <input type="radio" id="marital-status" name="marital-status" value ="{{ client.marital_status }}" checked> {{ client.marital_status }}
+                    <input type="radio" id="marital-status" name="marital-status" value ="single"> single
+                    <input type="radio" id="marital-status" name="marital-status" value ="married"> married
+                    <input type="radio" id="marital-status" name="marital-status" value ="divorced"> divorced
+                    <input type="radio" id="marital-status" name="marital-status" value ="widowed"> widowed
+                    <input type="radio" id="marital-status" name="marital-status" value ="separated"> separated
+                    <input type="radio" id="marital-status" name="marital-status" value ="cohabiting"> cohabiting
+                    <input type="radio" id="marital-status" name="marital-status" value ="other"> other
+                </div>
+                <hr/>
+    
+    
+                <div class ="form-group">
+                    <label for="occupation">Occupation: </label><br/>
+                    <input type="radio" id="occupation" name="occupation" value="{{ client.occupation }}" checked>{{ client.occupation }}
+                    <input type="radio" id="occupation" name="occupation" value="employed">employed
+                    <input type="radio" id="occupation" name="occupation" value="unemployed">unemployed
+                    <input type="radio" id="occupation" name="occupation" value="student">student
+                    <input type="radio" id="occupation" name="occupation" value="retired">retired
+                    <input type="radio" id="occupation" name="occupation" value="housewife">housewife
+                    <input type="radio" id="occupation" name="occupation" value="self-employed">self-employed
+                    <input type="radio" id="occupation" name="occupation" value="other">other
+    
+                </div>
+                <hr/>
+                
+                <div class ="form-group">
+                    <label for="gender-identity">Gender Identity</label>
+                    <input type="text" class="form-control" id="gender-identity" name="gender-identity" value="{{ client.gender_identity }}">
+                </div>
+               <hr/>
+                <div class ="form-group">
+                    <label for="sexual-orientation">Sexual Orientation</label>
+                    <input type="text" class="form-control" id="sexual-orientation" name="sexual-orientation" value="{{client.sexual_orientation}}">
+                </div>
+                <hr/>
+                <div class ="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" name="phone" value ="{{ client.phone_number }}">
+                </div>
+                <hr/>
+                <div class ="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" name="line1" value ="{{ client.address }}"">
+                    <input type="text" class="form-control" name="city" placeholder="City">
+                    <input type="text" class="form-control" name="state" placeholder="State">
+                    <input type="text" class="form-control" name="zip-code" placeholder="Zip">
+                    <input type="text" class="form-control" name="country" placeholder="Country">
+                </div>
+                <hr/>
+                <div class ="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" value = "{{ client.email }}"">
+                </div>
+                <hr/>
+                <div class ="form-group">
+                    <label for="ethnicity">Ethnicity</label>
+                    <input type="text" class="form-control" id="ethnicity" name="ethnicity" value ="{{ client.ethnicity }}">
+                </div>
+                <hr/>
+                <div class ="form-group">
+                    <label for="race">Race</label>
+                    <input type="text" class="form-control" id="race" name="race" value = "{{ client.race }}">
+                </div>
+                <hr/>
+                <input type ="submit" value = "Update Profile" class ="btn btn-success"> 
+
+            </nav>
+            <nav class="tabpage" id="tabpage_2">
+            <p>Customer Information</p>
+            {% extends "homebase.html" %}
+            {% block head %}
+                <meta name = "description" content="Home page for MIS data collection">
+            {% endblock head %}
+            {% block title %}<title>Home</title>{% endblock title %}
+            {% block content %}
+            <div class="container-fluid">
+                <h1 class="mt-4">CUSTOMER INFORMATION FORM MMG LIMITED 2023 (MIS)</h1>
+                
+                <div class="msg">{{ msg }}</div>
+                <form action="{{ url_for('customer_information') }}" method="post">
+        
+                <body>
+                <article>
+                <form>
+                    <div class ="row">
+                        <div class="col-5">
+                    <label for ="lastname">Customer Lastname:</label>
+                </div>
+                <div class="col-7">
+                <input type="text" name="last_name" id="last_name" value="{{ last_name}}">
+                
+                </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="Firstname">Customer FirstName:</label>
+            </div>
+            <div class="col-7">
+            <input type="text" name="first_name" id="first_name" value="{{ first_name}}">
+            
+            </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="middlename">Customer MiddleName:</label>
+            </div>
+            <div class="col-7">
+            <input type="text" name="middle_name" id="middle_name" value="{{ middle_name}}">
+            
+            </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="dob">Date of birth:</label>
+            </div>
+            <div class="col-7">
+            <input type="date" name="dob" id="dob" value="{{ dob}}">
+            
+            </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="Customer_Estimated_delivery_date">Customer Estimated delivery date:</label>
+            </div>
+            <div class="col-7">
+            <input type="date" name="Customer_Estimated_delivery_date" id="Customer_Estimated_delivery_date" value="{{Customer_Estimated_delivery_date}}">
+            
+            </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="Address">Customer Address:</label>
+            </div>
+            <div class="col-7">
+            <input type="text" name="Address" id="Address" value="{{ Address}}">
+            
+            </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="Residency_of_Customer">Residency of Customer:</label>
+            </div>
+            <div class="col-7">
+            <input type="text" name="Residency" id="Residency" value="{{ Residency}}">
+            
+            </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="State">State:</label>
+            </div>
+            <div class="col-7">
+            <input type="text" name="city" id="city" value="{{ city}}">
+            
+            </div>
+            </div>
+            <hr/>
+            
+            <div class ="row">
+                <div class="col-5">
+            <label for ="zip">zip:</label>
+            </div>
+            <div class="col-7">
+            <input type="text" name="code" id="code" value="{{code}}">
+            
+            </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="tel">Customer telephone Number:</label>
+            </div>
+            <div class="col-7">
+            <input type="tel" name="tel" id="tel" value="{{tel}}">
+            
+            </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="type of insurance">Customer type of insurance:</label>
+            </div>
+                    <input type ="radio" name ="type of insurance" value ="private" id ="private">private<br/>
+                    <input type ="radio" name ="type of insurance" value ="medicaid" id ="medicaid">medicaid<br/>
+                    <input type ="radio" name ="type of insurance" value ="medicare" id ="medicare">medicare<br/>
+                    <input type ="radio" name ="type of insurance" value ="uninsured" id ="uninsured">uninsured<br/>
+                    <input type ="radio" name ="type of insurance" value ="unknown" id ="unknown">unknown<br/>
+                </div>
+            </div>
+            <hr/>
+                     Race:<br/>
+                    <input type ="radio" name ="race" value ="American Indian/Alaskan Native" id ="American Indian/Alaskan Native">American Indian/Alaskan Native<br/>
+                    <input type ="radio" name ="race" value ="Native Hawaiian/Pacific Islander" id ="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander<br/>
+                    <input type ="radio" name ="race" value ="Asian" id ="Asian">Asian<br/>
+                    <input type ="radio" name ="race" value ="White" id ="White">White<br/>
+                    <input type ="radio" name ="race" value ="Black/African Am." id ="Black/African Am.">Black/African Am.<br/>
+                    <input type ="radio" name ="race" value ="Unk" id ="Unk">Unk<br/>
+                    <input type ="radio" name ="race" value ="Other" id ="Other">Other<br/>
+                </div>
+            </div>
+            <hr/>
+                    Hispanic:<br/>
+                    <input type ="radio" name ="hispanic" value ="yes" id ="yes">yes<br/>
+                    <input type ="radio" name ="hispanic" value ="No" id ="No">No<br/>
+                    <input type ="radio" name ="hispanic" value ="unk" id ="unk">unk<br/>
+                </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="Country_of_Birth">Country of Birth:</label>
+            </div>
+            <div class="col-7">
+            <input type="text" name="Country_of_Birth" id="Country_of_Birth" value="{{Country_of_Birth}}">
+            
+            </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="Customer_Primary_Language">Customer Primary Language:</label>
+            </div>
+            <div class="col-7">
+            <input type="text" name="Primary_Language" id="Primary_Language" value="{{Primary_Language}}">
+            
+            </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="check_if_interpreter_is_needed">check if interpreter is needed:</label>
+            </div>
+            <div class="col-7">
+            <input type="text" name="check_if_interpreter_is_needed" id="check_if_interpreter_is_needed" value="{{check_if_interpreter_is_needed}}">
+            
+            </div>
+            </div>
+            <hr/>
+            </form>
+            </article>
+            <aside>
+                <h2>GUARANTOR INFORMATION</h2>
+            <form>
+                <div class ="row">
+                    <div class="col-5">
+                <label for ="Address">Address:</label>
+                </div>
+                <div class="col-7">
+                <input type="text" name="Address" id="Address" value="{{ Address}}">
+                
+                </div>
+                </div>
+                <hr/>
+                <div class ="row">
+                    <div class="col-5">
+                <label for ="Residency">Residency:</label>
+                </div>
+                <div class="col-7">
+                <input type="text" name="Residency" id="Residency" value="{{ Residency}}">
+                
+                </div>
+                </div>
+                <hr/>
+                <div class ="row">
+                    <div class="col-5">
+                <label for ="State">State:</label>
+                </div>
+                <div class="col-7">
+                <input type="text" name="city" id="city" value="{{ city}}">
+                
+                </div>
+                </div>
+                <hr/>
+                
+                <div class ="row">
+                    <div class="col-5">
+                <label for ="zip">zip:</label>
+                </div>
+                <div class="col-7">
+                <input type="text" name="code" id="code" value="{{code}}">
+                
+                </div>
+                </div>
+                <hr/>
+                <div class ="row">
+                    <div class="col-5">
+                <label for ="tel">Telephone Number:</label>
+                </div>
+                <div class="col-7">
+                <input type="tel" name="tel" id="tel" value="{{tel}}">
+                
+                </div>
+                </div>
+                <hr/>   
+            
+            </form>
+            </aside>
+            <details>
+            <summary>read more</summary> 
+            <div class ="row">
+                <div class="col-5">
+            <label for ="type of insurance">Type of insurance:</label>
+            </div>
+                    <input type ="radio" name ="type of insurance" value ="private" id ="private">private<br/>
+                    <input type ="radio" name ="type of insurance" value ="medicaid" id ="medicaid">medicaid<br/>
+                    <input type ="radio" name ="type of insurance" value ="medicare" id ="medicare">medicare<br/>
+                    <input type ="radio" name ="type of insurance" value ="uninsured" id ="uninsured">uninsured<br/>
+                    <input type ="radio" name ="type of insurance" value ="unknown" id ="unknown">unknown<br/>
+                </div>
+            </div>
+            <hr/>
+                     Race:<br/>
+                    <input type ="radio" name ="race" value ="American Indian/Alaskan Native" id ="American Indian/Alaskan Native">American Indian/Alaskan Native<br/>
+                    <input type ="radio" name ="race" value ="Native Hawaiian/Pacific Islander" id ="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander<br/>
+                    <input type ="radio" name ="race" value ="Asian" id ="Asian">Asian<br/>
+                    <input type ="radio" name ="race" value ="White" id ="White">White<br/>
+                    <input type ="radio" name ="race" value ="Black/African Am." id ="Black/African Am.">Black/African Am.<br/>
+                    <input type ="radio" name ="race" value ="Unk" id ="Unk">Unk<br/>
+                    <input type ="radio" name ="race" value ="Other" id ="Other">Other<br/>
+                </div>
+            </div>
+            <hr/>
+                    Hispanic:<br/>
+                    <input type ="radio" name ="hispanic" value ="yes" id ="yes">yes<br/>
+                    <input type ="radio" name ="hispanic" value ="No" id ="No">No<br/>
+                    <input type ="radio" name ="hispanic" value ="unk" id ="unk">unk<br/>
+                </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="Country_of_Birth">Country of Birth:</label>
+            </div>
+            <div class="col-7">
+            <input type="text" name="Country_of_Birth" id="Country_of_Birth" value="{{Country_of_Birth}}">
+            
+            </div>
+            </div>
+            <hr/>
+            <div class ="row">
+                <div class="col-5">
+            <label for ="Primary_Language">Primary Language:</label>
+            </div>
+            <div class="col-7">
+            <input type="text" name="Primary_Language" id="Primary_Language" value="{{Primary_Language}}">
+            
+            </div>
+            </div>
+            <hr/>
+                
+            
+            </details>
+            <footer>
+                
+            </footer>
+            </body>
+            </html>
+            
+             
+            
+        </nav>
+        <nav class="tabpage" id="tabpage_3">
+        <p>Employee Records</p>
+        {% extends "homebase.html" %}
+{% block head %}
+    <meta name = "description" content="Home page for MIS data collection">
+{% endblock head %}
+{% block title %}<title>Home</title>{% endblock title %}
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mt-4">EMPLOYEE RECORDS FORM MMG LIMITED 2023 (MIS)</h1>
+    
+    <div class="msg">{{ msg }}</div>
+    <form action="{{ url_for('employee_records') }}" method="post">
+    
+<body>      
+<article>
+    <form>
+        <div class ="row">
+            <div class="col-5">
+        <label for ="lastname">Employee Lastname:</label>
+    </div>
+    <div class="col-7">
+    <input type="text" name="last_name" id="last_name" value="{{ last_name}}">
+    
+    </div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Firstname">Employee FirstName:</label>
+</div>
+<div class="col-7">
+<input type="text" name="first_name" id="first_name" value="{{ first_name}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="middlename">Employee MiddleName:</label>
+</div>
+<div class="col-7">
+<input type="text" name="middle_name" id="middle_name" value="{{ middle_name}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="dob">Date of birth:</label>
+</div>
+<div class="col-7">
+<input type="date" name="dob" id="dob" value="{{ dob}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Employee_Estimated_delivery_date">Employee Estimated delivery date:</label>
+</div>
+<div class="col-7">
+<input type="date" name="Employee_Estimated_delivery_date" id="Employee_Estimated_delivery_date" value="{{Employee_Estimated_delivery_date}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Employee_Address">Employee Address:</label>
+</div>
+<div class="col-7">
+<input type="text" name="Address" id="Address" value="{{ Address}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Residency_of_Employee">Residency of Employee:</label>
+</div>
+<div class="col-7">
+<input type="text" name="Residency" id="Residency" value="{{ Residency}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="State">State:</label>
+</div>
+<div class="col-7">
+<input type="text" name="city" id="city" value="{{ city}}">
+
+</div>
+</div>
+<hr/>
+
+<div class ="row">
+    <div class="col-5">
+<label for ="zip">zip:</label>
+</div>
+<div class="col-7">
+<input type="text" name="code" id="code" value="{{code}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="tel">Employee telephone Number:</label>
+</div>
+<div class="col-7">
+<input type="tel" name="tel" id="tel" value="{{tel}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Employee type of insurance">Employee type of insurance:</label>
+</div>
+        <input type ="radio" name ="Employee type of insurance" value ="private" id ="private">private<br/>
+        <input type ="radio" name ="Employee type of insurance" value ="medicaid" id ="medicaid">medicaid<br/>
+        <input type ="radio" name ="Employee type of insurance" value ="medicare" id ="medicare">medicare<br/>
+        <input type ="radio" name ="Employee type of insurance" value ="uninsured" id ="uninsured">uninsured<br/>
+        <input type ="radio" name ="Employee type of insurance" value ="unknown" id ="unknown">unknown<br/>
+    </div>
+</div>
+<hr/>
+         Race:<br/>
+        <input type ="radio" name ="race" value ="American Indian/Alaskan Native" id ="American Indian/Alaskan Native">American Indian/Alaskan Native<br/>
+        <input type ="radio" name ="race" value ="Native Hawaiian/Pacific Islander" id ="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander<br/>
+        <input type ="radio" name ="race" value ="Asian" id ="Asian">Asian<br/>
+        <input type ="radio" name ="race" value ="White" id ="White">White<br/>
+        <input type ="radio" name ="race" value ="Black/African Am." id ="Black/African Am.">Black/African Am.<br/>
+        <input type ="radio" name ="race" value ="Unk" id ="Unk">Unk<br/>
+        <input type ="radio" name ="race" value ="Other" id ="Other">Other<br/>
+    </div>
+</div>
+<hr/>
+        Hispanic:<br/>
+        <input type ="radio" name ="hispanic" value ="yes" id ="yes">yes<br/>
+        <input type ="radio" name ="hispanic" value ="No" id ="No">No<br/>
+        <input type ="radio" name ="hispanic" value ="unk" id ="unk">unk<br/>
+    </div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Country_of_Birth">Country of Birth:</label>
+</div>
+<div class="col-7">
+<input type="text" name="Country_of_Birth" id="Country_of_Birth" value="{{Country_of_Birth}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Employee_Primary_Language">Employee Primary Language:</label>
+</div>
+<div class="col-7">
+<input type="text" name="Employee_Primary_Language" id="Employee_Primary_Language" value="{{Employee_Primary_Language}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="check_if_interpreter_is_needed">check if interpreter is needed:</label>
+</div>
+<div class="col-7">
+<input type="text" name="check_if_interpreter_is_needed" id="check_if_interpreter_is_needed" value="{{check_if_interpreter_is_needed}}">
+
+</div>
+</div>
+<hr/>
+</form>
+</article>
+<aside>
+    <h2>GUARANTOR INFORMATION</h2>
+<form>
+    <div class ="row">
+        <div class="col-5">
+    <label for ="Address">Address:</label>
+    </div>
+    <div class="col-7">
+    <input type="text" name="Address" id="Address" value="{{ Address}}">
+    
+    </div>
+    </div>
+    <hr/>
+    <div class ="row">
+        <div class="col-5">
+    <label for ="Residency">Residency:</label>
+    </div>
+    <div class="col-7">
+    <input type="text" name="Residency" id="Residency" value="{{ Residency}}">
+    
+    </div>
+    </div>
+    <hr/>
+    <div class ="row">
+        <div class="col-5">
+    <label for ="State">State:</label>
+    </div>
+    <div class="col-7">
+    <input type="text" name="city" id="city" value="{{ city}}">
+    
+    </div>
+    </div>
+    <hr/>
+    
+    <div class ="row">
+        <div class="col-5">
+    <label for ="zip">zip:</label>
+    </div>
+    <div class="col-7">
+    <input type="text" name="code" id="code" value="{{code}}">
+    
+    </div>
+    </div>
+    <hr/>
+    <div class ="row">
+        <div class="col-5">
+    <label for ="tel">Telephone Number:</label>
+    </div>
+    <div class="col-7">
+    <input type="tel" name="tel" id="tel" value="{{tel}}">
+    
+    </div>
+    </div>
+    <hr/>   
+
+</form>
+</aside>
+<details>
+<summary>read more</summary> 
+<div class ="row">
+    <div class="col-5">
+<label for ="type of insurance">Type of insurance:</label>
+</div>
+        <input type ="radio" name ="type of insurance" value ="private" id ="private">private<br/>
+        <input type ="radio" name ="type of insurance" value ="medicaid" id ="medicaid">medicaid<br/>
+        <input type ="radio" name ="type of insurance" value ="medicare" id ="medicare">medicare<br/>
+        <input type ="radio" name ="type of insurance" value ="uninsured" id ="uninsured">uninsured<br/>
+        <input type ="radio" name ="type of insurance" value ="unknown" id ="unknown">unknown<br/>
+    </div>
+</div>
+<hr/>
+         Race:<br/>
+        <input type ="radio" name ="race" value ="American Indian/Alaskan Native" id ="American Indian/Alaskan Native">American Indian/Alaskan Native<br/>
+        <input type ="radio" name ="race" value ="Native Hawaiian/Pacific Islander" id ="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander<br/>
+        <input type ="radio" name ="race" value ="Asian" id ="Asian">Asian<br/>
+        <input type ="radio" name ="race" value ="White" id ="White">White<br/>
+        <input type ="radio" name ="race" value ="Black/African Am." id ="Black/African Am.">Black/African Am.<br/>
+        <input type ="radio" name ="race" value ="Unk" id ="Unk">Unk<br/>
+        <input type ="radio" name ="race" value ="Other" id ="Other">Other<br/>
+    </div>
+</div>
+<hr/>
+        Hispanic:<br/>
+        <input type ="radio" name ="hispanic" value ="yes" id ="yes">yes<br/>
+        <input type ="radio" name ="hispanic" value ="No" id ="No">No<br/>
+        <input type ="radio" name ="hispanic" value ="unk" id ="unk">unk<br/>
+    </div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Country_of_Birth">Country of Birth:</label>
+</div>
+<div class="col-7">
+<input type="text" name="Country_of_Birth" id="Country_of_Birth" value="{{Country_of_Birth}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Primary_Language">Primary Language:</label>
+</div>
+<div class="col-7">
+<input type="text" name="Primary_Language" id="Primary_Language" value="{{Primary_Language}}">
+
+</div>
+</div>
+<hr/>
+    
+
+</details>
+<footer>
+    
+</footer>
+</body>
+</html>
+
+ 
+
+
+    </nav>
+    <nav class="tabpage" id="tabpage_4">
+    <p>Financial Data</p>
+    {% extends "homebase.html" %}
+{% block head %}
+    <meta name = "description" content="Home page for MIS data collection">
+{% endblock head %}
+{% block title %}<title>Home</title>{% endblock title %}
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mt-4">BALANCE SHEET FINANCIAL STATEMENT FOR EACH QUARTER OF MMG LIMITED 2023 (MIS</h1>
+    <h3>First Quarter</h3>
+    <div class="msg">{{ msg }}</div>
+    <form action="{{ url_for('financial_data') }}" method="post">
+</head>
+<body>
+     
+<article>
+    <form>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="Balance For January B/D">Balance For January B/D:</label>
+       <div class="col-7">
+        <input type="text" name="Balance_For_January_B/D" id="Balance_For_January_B/D" value="{{ Balance_For_January_B/D }}">
+        </div>
+        </div>
+        <hr/>
+            <div class ="row">
+                <div class="col-5">
+           <label for ="May B/D">January B/D:</label>
+           <div class="col-7"></div>
+           <input type="date" name="january_B/D" id="january_B/D" value="{{ january_B/D }}">
+        </div>
+    </div>
+    <hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="Balance For Feburary B/D">Balance For Feburary B/D:</label>
+   <div class="col-7">
+    <input type="text" name="Balance_For_Feburary_B/D" id="Balance_For_Feburary_B/D" value="{{ Balance_For_Feburary_B/D }}">
+    </div>
+    </div>
+    <hr/>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="Feburary Sales">Feburary Sales:</label>
+       <div class="col-7"></div>
+       <input type="date" name="feburary_B/D" id="feburary_B/D" value="{{ feburary_B/D }}">
+    </div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For March B/D">Balance For March B/D:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_March_B/D" id="Balance_For_March_B/D" value="{{ Balance_For_March_B/D }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="March B/D">March B/D:</label>
+   <div class="col-7"></div>
+   <input type="date" name="march_B/D" id="march_B/D" value="{{ march_B/D }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For April B/D">Balance For April B/D:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_April_B/D" id="Balance_For_April_B/D" value="{{ Balance_For_April_B/D }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="April B/D">April B/D:</label>
+   <div class="col-7"></div>
+   <input type="date" name="april_B/D" id="april_B/D" value="{{ april_B/D }}">
+</div>
+</div>
+<hr/>
+    </form>
+</article>
+<aside>
+    <h2>Second Quarter</h2>
+<form>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="Balance For May B/D">Balance For May B/D:</label>
+   <div class="col-7">
+    <input type="text" name="Balance_For_May_B/D" id="Balance_For_May_B/D" value="{{ Balance_For_May_B/D }}">
+    </div>
+    </div>
+    <hr/>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="May B/D">May B/D:</label>
+       <div class="col-7"></div>
+       <input type="date" name="may_B/D" id="may_B/D" value="{{ may_B/D }}">
+    </div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For june B/D">Balance For June B/D:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_June_B/D" id="Balance_For_June_B/D" value="{{ Balance_For_June_B/D }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="June B/D">June B/D:</label>
+   <div class="col-7"></div>
+   <input type="date" name="june_B/D" id="june_B/D" value="{{ june_B/D }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For July B/D">Balance For July B/D:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_July_B/D" id="Balance_For_July_B/D" value="{{ Balance_For_July_B/D }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="July B/D">July B/D:</label>
+   <div class="col-7"></div>
+   <input type="date" name="july_B/D" id="july_B/D" value="{{ july_B/D }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For August B/D">Balance For August B/D:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_August_B/D" id="Balance_For_August_B/D" value="{{ Balance_For_August_B/D }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="August B/D">August B/D:</label>
+   <div class="col-7"></div>
+   <input type="date" name="august_B/D" id="august_B/D" value="{{ august_B/D }}">
+</div>
+</div>
+<hr/>
+        
+    </form>
+</aside>
+<details>
+<summary>read more</summary> 
+        <div class ="row">
+            <div class="col-5">
+        <label for ="Balance For September B/D">Balance For September B/D:</label>
+        <div class="col-7">
+        <input type="text" name="Balance_For_September_B/D" id="Balance_For_September_B/D" value="{{ Balance_For_September_B/D }}">
+        </div>
+        </div>
+        <hr/>
+            <div class ="row">
+                <div class="col-5">
+           <label for ="September B/D">September B/D:</label>
+           <div class="col-7"></div>
+           <input type="date" name="September_B/D" id="September_B/D" value="{{ September_B/D }}">
+        </div>
+        </div>
+        <hr/>
+        <div class ="row">
+            <div class="col-5">
+        <label for ="Balance For October B/D">Balance For October B/D:</label>
+        <div class="col-7">
+        <input type="text" name="Balance_For_October_B/D" id="Balance_For_October_B/D" value="{{ Balance_For_October_B/D }}">
+        </div>
+        </div>
+        <hr/>
+            <div class ="row">
+                <div class="col-5">
+           <label for ="October B/D">October B/D:</label>
+           <div class="col-7"></div>
+           <input type="date" name="october_B/D" id="october_B/D" value="{{ october_B/D }}">
+        </div>
+        </div>
+        <hr/>
+        <div class ="row">
+            <div class="col-5">
+        <label for ="Balance For November B/D">Balance For November B/D:</label>
+        <div class="col-7">
+        <input type="text" name="Balance_For_November_Sales" id="Balance_For_November_B/D" value="{{ Balance_For_November_B/D }}">
+        </div>
+        </div>
+        <hr/>
+            <div class ="row">
+                <div class="col-5">
+           <label for ="November B/D">November B/D:</label>
+           <div class="col-7"></div>
+           <input type="date" name="november_B/D" id="november_B/D" value="{{ november_B/D }}">
+        </div>
+        </div>
+        <hr/>
+        <div class ="row">
+            <div class="col-5">
+        <label for ="Balance For December B/D">Balance For December B/D:</label>
+        <div class="col-7">
+        <input type="text" name="Balance_For_December_B/D" id="Balance_For_December_B/D" value="{{ Balance_For_December_B/D }}">
+        </div>
+        </div>
+        <hr/>
+            <div class ="row">
+                <div class="col-5">
+           <label for ="May B/D">December B/D:</label>
+           <div class="col-7"></div>
+           <input type="date" name="december_B/D" id="december_B/D" value="{{ december_B/D }}">
+        </div>
+        </div>
+        <hr/>
+    </details>
+    <footer>
+        
+    </footer>
+    </body>
+    </html>
+
+
+
+
+</nav>
+<nav class="tabpage" id="tabpage_5">
+<p>Sales Figure</p>
+{% extends "homebase.html" %}
+{% block head %}
+    <meta name = "description" content="Home page for MIS data collection">
+{% endblock head %}
+{% block title %}<title>Home</title>{% endblock title %}
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mt-4">SALES FIGURE FOR EACH QUARTER OF MMG LIMITED 2023 (MIS)</h1>
+    <h3>First Quarter</h3>
+    <div class="msg">{{ msg }}</div>
+    <form action="{{ url_for('sales_figure') }}" method="post">
+
+<body>      
+<article>
+    <form>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="Balance For January Sales">Balance For January Sales:</label>
+       <div class="col-7">
+        <input type="text" name="Balance_For_January_Sales" id="Balance_For_January_Sales" value="{{ Balance_For_January_Sales }}">
+        </div>
+        </div>
+        <hr/>
+            <div class ="row">
+                <div class="col-5">
+           <label for ="May Sales">January Sales:</label>
+           <div class="col-7"></div>
+           <input type="date" name="january_sales" id="january_sales" value="{{ january_sales }}">
+        </div>
+    </div>
+    <hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="Balance For Feburary Sales">Balance For Feburary Sales:</label>
+   <div class="col-7">
+    <input type="text" name="Balance_For_Feburary_Sales" id="Balance_For_Feburary_Sales" value="{{ Balance_For_Feburary_Sales }}">
+    </div>
+    </div>
+    <hr/>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="Feburary Sales">Feburary Sales:</label>
+       <div class="col-7"></div>
+       <input type="date" name="feburary_sales" id="feburary_sales" value="{{ feburary_sales }}">
+    </div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For March Sales">Balance For March Sales:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_March_Sales" id="Balance_For_March_Sales" value="{{ Balance_For_March_Sales }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="March Sales">March Sales:</label>
+   <div class="col-7"></div>
+   <input type="date" name="march_sales" id="march_sales" value="{{ march_sales }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For April Sales">Balance For April Sales:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_April_Sales" id="Balance_For_April_Sales" value="{{ Balance_For_April_Sales }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="April Sales">April Sales:</label>
+   <div class="col-7"></div>
+   <input type="date" name="april_sales" id="april_sales" value="{{ april_sales }}">
+</div>
+</div>
+<hr/>
+    </form>
+</article>
+<aside>
+    <h2>Second Quarter</h2>
+<form>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="Balance For May Sales">Balance For May Sales:</label>
+   <div class="col-7">
+    <input type="text" name="Balance_For_May_Sales" id="Balance_For_May_Sales" value="{{ Balance_For_May_Sales }}">
+    </div>
+    </div>
+    <hr/>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="May Sales">May Sales:</label>
+       <div class="col-7"></div>
+       <input type="date" name="may_sales" id="may_sales" value="{{ may_sales }}">
+    </div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For june Sales">Balance For June Sales:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_Junr_Sales" id="Balance_For_June_Sales" value="{{ Balance_For_June_Sales }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="June Sales">June Sales:</label>
+   <div class="col-7"></div>
+   <input type="date" name="june_sales" id="june_sales" value="{{ june_sales }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For July Sales">Balance For July Sales:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_July_Sales" id="Balance_For_July_Sales" value="{{ Balance_For_July_Sales }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="July Sales">July Sales:</label>
+   <div class="col-7"></div>
+   <input type="date" name="july_sales" id="july_sales" value="{{ july_sales }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For August Sales">Balance For August Sales:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_August_Sales" id="Balance_For_August_Sales" value="{{ Balance_For_August_Sales }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="August Sales">August Sales:</label>
+   <div class="col-7"></div>
+   <input type="date" name="august_sales" id="august_sales" value="{{ august_sales }}">
+</div>
+</div>
+<hr/>
+
+        
+    </form>
+</aside>
+<details>
+<summary>read more</summary> 
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For September Sales">Balance For September Sales:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_September_Sales" id="Balance_For_September_Sales" value="{{ Balance_For_September_Sales }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="September Sales">September Sales:</label>
+   <div class="col-7"></div>
+   <input type="date" name="September_sales" id="September_sales" value="{{ September_sales }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For October Sales">Balance For October Sales:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_October_Sales" id="Balance_For_October_Sales" value="{{ Balance_For_October_Sales }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="October Sales">October Sales:</label>
+   <div class="col-7"></div>
+   <input type="date" name="october_sales" id="october_sales" value="{{ october_sales }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For November Sales">Balance For November Sales:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_November_Sales" id="Balance_For_November_Sales" value="{{ Balance_For_November_Sales }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="November Sales">November Sales:</label>
+   <div class="col-7"></div>
+   <input type="date" name="november_sales" id="november_sales" value="{{ november_sales }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For December Sales">Balance For December Sales:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_December_Sales" id="Balance_For_December_Sales" value="{{ Balance_For_December_Sales }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="May Sales">December Sales:</label>
+   <div class="col-7"></div>
+   <input type="date" name="december_sales" id="december_sales" value="{{ december_sales }}">
+</div>
+</div>
+<hr/>
+    </details>
+    <footer>
+        
+    </footer>
+    </body>
+    </html>
+
+
+</nav>
+<nav class="tabpage" id="tabpage_6">
+<p>Inventory Levels</p>
+{% extends "homebase.html" %}
+{% block head %}
+    <meta name = "description" content="Home page for MIS data collection">
+{% endblock head %}
+{% block title %}<title>Home</title>{% endblock title %}
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mt-4">INVENTORY LEVELS FOR EACH QUARTER OF MMG LIMITED 2023 (MIS)</h1>
+    <h3>First Quarter</h3>
+    <div class="msg">{{ msg }}</div>
+    <form action="{{ url_for('inventory_levels') }}" method="post">
+
+<body>         
+<article>
+    <form>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="Balance For January Inventory">Balance For January Inventory:</label>
+       <div class="col-7">
+        <input type="text" name="Balance_For_January_Inventory" id="Balance_For_January_Inventory" value="{{ Balance_For_January_Inventory }}">
+        </div>
+        </div>
+        <hr/>
+            <div class ="row">
+                <div class="col-5">
+           <label for ="january Inventory">January Inventory:</label>
+           <div class="col-7"></div>
+           <input type="date" name="january_Inventory" id="january_Inventory" value="{{ january_Inventory }}">
+        </div>
+    </div>
+    <hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="Balance For Feburary Inventory">Balance For Feburary Inventory:</label>
+   <div class="col-7">
+    <input type="text" name="Balance_For_Feburary_Inventory" id="Balance_For_Feburary_Inventory" value="{{ Balance_For_Feburary_Inventory }}">
+    </div>
+    </div>
+    <hr/>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="Feburary Inventory">Feburary Inventory:</label>
+       <div class="col-7"></div>
+       <input type="date" name="feburary_Inventory" id="feburary_Inventory" value="{{ feburary_Inventory }}">
+    </div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For March Inventory">Balance For March Inventory:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_March_Inventory" id="Balance_For_March_Inventory" value="{{ Balance_For_March_Inventory }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="March Sales">March Sales:</label>
+   <div class="col-7"></div>
+   <input type="date" name="march_Inventory" id="march_Inventory" value="{{ march_Inventory }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For April Inventory">Balance For April Inventory:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_April_Inventory" id="Balance_For_April_Inventory" value="{{ Balance_For_April_Inventory }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="April Inventory">April Inventory:</label>
+   <div class="col-7"></div>
+   <input type="date" name="april_sales" id="april_Inventory" value="{{ april_Inventory }}">
+</div>
+</div>
+<hr/>
+    </form>
+</article>
+<aside>
+    <h2>Second Quarter</h2>
+<form>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="Balance For May Inventory">Balance For May Inventory:</label>
+       <div class="col-7">
+        <input type="text" name="Balance_For_May_Inventory" id="Balance_For_May_Inventory" value="{{ Balance_For_May_Inventory }}">
+        </div>
+        </div>
+        <hr/>
+            <div class ="row">
+                <div class="col-5">
+           <label for ="May Inventory">May Inventory:</label>
+           <div class="col-7"></div>
+           <input type="date" name="may_Inventory" id="may_Inventory" value="{{ may_Inventory }}">
+        </div>
+    </div>
+    <hr/>
+    <div class ="row">
+        <div class="col-5">
+    <label for ="Balance For june Inventory">Balance For June Inventory:</label>
+    <div class="col-7">
+    <input type="text" name="Balance_For_June_Inventory" id="Balance_For_June_Inventory" value="{{ Balance_For_June_Inventory }}">
+    </div>
+    </div>
+    <hr/>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="June Inventory">June Sales:</label>
+       <div class="col-7"></div>
+       <input type="date" name="june_Inventory" id="june_Inventory" value="{{ june_Inventory }}">
+    </div>
+    </div>
+    <hr/>
+    <div class ="row">
+        <div class="col-5">
+    <label for ="Balance For July Inventory">Balance For July Inventory:</label>
+    <div class="col-7">
+    <input type="text" name="Balance_For_July_Inventory" id="Balance_For_July_Inventory" value="{{ Balance_For_July_Inventory }}">
+    </div>
+    </div>
+    <hr/>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="July Inventory">July Inventory:</label>
+       <div class="col-7"></div>
+       <input type="date" name="july_Inventory" id="july_sales" value="{{ july_Inventory }}">
+    </div>
+    </div>
+    <hr/>
+    <div class ="row">
+        <div class="col-5">
+    <label for ="Balance For August Inventory">Balance For August Inventory:</label>
+    <div class="col-7">
+    <input type="text" name="Balance_For_August_Inventory" id="Balance_For_August_Inventory" value="{{ Balance_For_August_Inventory }}">
+    </div>
+    </div>
+    <hr/>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="August Inventory">August Inventory:</label>
+       <div class="col-7"></div>
+       <input type="date" name="august_Inventory" id="august_Inventory" value="{{ august_Inventory }}">
+    </div>
+    </div>
+    <hr/>
+    
+    </form>
+</aside>
+<details>
+<summary>read more</summary> 
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For September Inventory">Balance For September Inventory:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_September_Inventory" id="Balance_For_September_Inventory" value="{{ Balance_For_September_Inventory }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="September B/D">September B/D:</label>
+   <div class="col-7"></div>
+   <input type="date" name="September_Inventory" id="September_Inventory" value="{{ September_Inventory }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For October Inventory">Balance For October Inventory:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_October_Inventory" id="Balance_For_October_Inventory" value="{{ Balance_For_October_Inventory }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="October B/D">October Inventory:</label>
+   <div class="col-7"></div>
+   <input type="date" name="october_Inventory" id="october_Inventory" value="{{ october_Inventory }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For November Inventory">Balance For November Inventory:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_November_Inventory" id="Balance_For_November_Inventory" value="{{ Balance_For_November_Inventory }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="November Inventory">November Inventory:</label>
+   <div class="col-7"></div>
+   <input type="date" name="november_Inventory" id="november_Inventory" value="{{ november_Inventory }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For December Inventory">Balance For December Inventory:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_December_Inventory" id="Balance_For_December_Inventory" value="{{ Balance_For_December_Inventory }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="May Inventory">December Inventory:</label>
+   <div class="col-7"></div>
+   <input type="date" name="december_Inventory" id="december_Inventory" value="{{ december_Inventory }}">
+</div>
+</div>
+<hr/>
+    </details>
+    <footer>
+        
+    </footer>
+    </body>
+    </html>
+
+
+
+ 
