@@ -1,178 +1,222 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name ="keywords" content ="HTML 5, CSS 3, JavaScript, jquery, Angularjs"/>
-<meta name ="description" content ="Dynamic web development">
-<meta name = "author" content ="lawrence">
-<meta name = "viewport" content ="width=device-width,initial-scale=1.0">
-<title>management information system</title>
-<link rel ="stylesheet" href ="font-awesome/css/font-awesome.min.css"/>
-<link rel ="stylesheet" href ="css/main.css">
-<style>
-    span{
-    color :red;
-    }
-
-    body{
-            background-color:white;
-    }
-
-    input{
-        width:10%;
-        padding: 12px;
-        margin: 8px;
-        border: none;
-        border-top: 3px solid blue;
-        border-bottom: 3px solid red;
-        background-color: green;
-        color: black;
-        text-align: center;
-
-    }
-
-    h1{
-        color:blueviolet;
-        text-align: center;
-    }
-h2{
-    color:red;
-    text-align: center;
-}
-
-label{
-    color:aqua;
-    text-align: center;
-}
-
-p{
-    color:brown;
-    text-align: center;
-}
-
-footer{
-    color:red;
-    text-align: center;
-}
-
-h3{
-    color:aquamarine;
-    text-align: center;
-}
-
-
-header {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 30px 10%;
-        }
- 
-        .navigate_links {
-            list-style: none;
-        }
- 
-        .navigate_links li {
-            display: inline-block;
-            padding: 10px 20px;
-        }
- 
-        .navigate_links li a {
-            transition: all 0.3s ease-in-out 0s;
-        }
- 
-        /* Add some transition to make navigation
-           bar attractive */
-        .navigate_links li a:hover {
-            color: greenyellow;
-            border: 2px solid blue;
-            box-shadow: 3px 3px 3px red, 3px 3px 3px blue;
-            border-radius: 8px;
-            margin: 10px;
-            padding: 12px;
-        }
-
-        a{
-	text-decoration: none;
-}
-
-
-</style>
-</head>
-<body>
-    <header>
-    
-        <nav>
-            <ul class="navigate_links">
-                <ul class="navigate_links">
-                    <li><a href ="inventorylevels.html">Next</a></li>
-                    <li><a href ="employeerecords.html">Previous</a></li>
-                  </ul>   
-                
-              </ul>   
-    </nav>
-    </header>      
-<article>
-    <h1>BALANCE SHEET FINANCIAL STATEMENT FOR EACH QUARTER OF MMG LIMITED 2023 (MIS)</h1>
+{% extends "homebase.html" %}
+{% block head %}
+    <meta name = "description" content="Home page for MIS data collection">
+{% endblock head %}
+{% block title %}<title>Home</title>{% endblock title %}
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mt-4">BALANCE SHEET FINANCIAL STATEMENT FOR EACH QUARTER OF MMG LIMITED 2023 (MIS</h1>
     <h3>First Quarter</h3>
+    <div class="msg">{{ msg }}</div>
+    <form action="{{ url_for('financial_data') }}" method="post">
+
+
+<body>
+    
+<article>
     <form>
-        <label for ="January Balance B/D">January Balance B/D:</label>
-        <input id ="January Balance B/D" name ="January Balance B/D" type ="text"/>
-        <label for = "datetime">Date Of Balance B/D</label>
-        <input type ="datetime-local" name ="datetime" id="datetime"/>
-        <label for ="Feburary Balance B/D">Feburary Balance B/D:</label>
-        <input id ="Feburary Balance B/D" name ="Feburary Balance B/D" type ="text"/>
-        <label for = "datetime">Date Of Balance B/D</label>
-        <input type ="datetime-local" name ="datetime" id="datetime"/><br/>
-        <label for ="March Balance B/D">March Balance B/D:</label>
-        <input id ="March Balance B/D" name ="March Balance B/D" type ="text"/>
-        <label for = "datetime">Date Of Balance B/D</label>
-        <input type ="datetime-local" name ="datetime" id="datetime"/>
-        <label for ="April Inventory">April Balance B/D:</label>
-        <input id ="April Balance B/D" name ="April Balance B/D" type ="text"/>
-        <label for = "datetime">Date Of Balance B/D</label>
-        <input type ="datetime-local" name ="datetime" id="datetime"/><br/>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="Balance For January B/D">Balance For January B/D:</label>
+       <div class="col-7">
+       <input type="text" name="Balance_For_January_B/D" id="Balance_For_January_B/D" value="{{ Balance_For_January_B/D }}">
+        </div>
+        </div>
+        <hr/>
+            <div class ="row">
+                <div class="col-5">
+           <label for ="january B/D">January B/D:</label>
+           <div class="col-7"></div>
+           <input type="date" name="january_B/D" id="january_B/D" value="{{ january_B/D }}">
+        </div>
+    </div>
+    <hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="Balance For Feburary B/D">Balance For Feburary B/D:</label>
+   <div class="col-7">
+    <input type="text" name="Balance_For_Feburary_B/D" id="Balance_For_Feburary_B/D" value="{{ Balance_For_Feburary_B/D }}">
+    </div>
+    </div>
+    <hr/>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="Feburary Sales">Feburary Sales:</label>
+       <div class="col-7"></div>
+       <input type="date" name="feburary_B/D" id="feburary_B/D" value="{{ feburary_B/D }}">
+    </div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For March B/D">Balance For March B/D:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_March_B/D" id="Balance_For_March_B/D" value="{{ Balance_For_March_B/D }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="March B/D">March B/D:</label>
+   <div class="col-7"></div>
+   <input type="date" name="march_B/D" id="march_B/D" value="{{ march_B/D }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For April B/D">Balance For April B/D:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_April_B/D" id="Balance_For_April_B/D" value="{{ Balance_For_April_B/D }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="April B/D">April B/D:</label>
+   <div class="col-7"></div>
+   <input type="date" name="april_B/D" id="april_B/D" value="{{ april_B/D }}">
+</div>
+</div>
+<hr/>
     </form>
 </article>
 <aside>
     <h2>Second Quarter</h2>
 <form>
-    <label for ="May Balance B/D">May Balance B/D:</label>
-        <input id ="May Balance B/D" name ="May Balance B/D" type ="text"/>
-        <label for = "datetime">Date Of Balance B/D</label>
-        <input type ="datetime-local" name ="datetime" id="datetime"/>
-        <label for ="June Balance B/D">June Balance B/D:</label>
-        <input id ="June Balance B/D" name ="June Balance B/D" type ="text"/>
-        <label for = "datetime">Date Of Balance B/D</label>
-        <input type ="datetime-local" name ="datetime" id="datetime"/><br/>
-        <label for ="July Balance B/D">July Balance B/D:</label>
-        <input id ="July Balance B/D" name ="July Balance B/D" type ="text"/>
-        <label for = "datetime">Date Of Balance B/D</label>
-        <input type ="datetime-local" name ="datetime" id="datetime"/>
-        <label for ="August Balance B/D">August Balance B/D:</label>
-        <input id ="August Balance B/D" name ="August Balance B/D" type ="text"/>
-        <label for = "datetime">Date Of Balance B/D</label>
-        <input type ="datetime-local" name ="datetime" id="datetime"/><br/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="Balance For May B/D">Balance For May B/D:</label>
+   <div class="col-7">
+    <input type="text" name="Balance_For_May_B/D" id="Balance_For_May_B/D" value="{{ Balance_For_May_B/D }}">
+    </div>
+    </div>
+    <hr/>
+        <div class ="row">
+            <div class="col-5">
+       <label for ="May B/D">May B/D:</label>
+       <div class="col-7"></div>
+       <input type="date" name="may_B/D" id="may_B/D" value="{{ may_B/D }}">
+    </div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For june B/D">Balance For June B/D:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_June_B/D" id="Balance_For_June_B/D" value="{{ Balance_For_June_B/D }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="June B/D">June B/D:</label>
+   <div class="col-7"></div>
+   <input type="date" name="june_B/D" id="june_B/D" value="{{ june_B/D }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For July B/D">Balance For July B/D:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_July_B/D" id="Balance_For_July_B/D" value="{{ Balance_For_July_B/D }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="July B/D">July B/D:</label>
+   <div class="col-7"></div>
+   <input type="date" name="july_B/D" id="july_B/D" value="{{ july_B/D }}">
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Balance For August B/D">Balance For August B/D:</label>
+<div class="col-7">
+<input type="text" name="Balance_For_August_B/D" id="Balance_For_August_B/D" value="{{ Balance_For_August_B/D }}">
+</div>
+</div>
+<hr/>
+    <div class ="row">
+        <div class="col-5">
+   <label for ="August B/D">August B/D:</label>
+   <div class="col-7"></div>
+   <input type="date" name="august_B/D" id="august_B/D" value="{{ august_B/D }}">
+</div>
+</div>
+<hr/>
+        
     </form>
 </aside>
 <details>
 <summary>read more</summary> 
-<label for ="September Balance B/D">September Balance B/D:</label>
-        <input id ="September Balance B/D" name ="September Balance B/D" type ="text"/>
-        <label for = "datetime">Date Of Balance B/D</label>
-        <input type ="datetime-local" name ="datetime" id="datetime"/>
-        <label for ="October Balance B/D">October Balance B/D:</label>
-        <input id ="October Balance B/D" name ="October Balance B/D" type ="text"/>
-        <label for = "datetime">Date Of Balance B/D</label>
-        <input type ="datetime-local" name ="datetime" id="datetime"/><br/>
-        <label for ="November Balance B/D">November Balance B/D:</label>
-        <input id ="November Balance B/D" name ="November Balance B/D" type ="text"/>
-        <label for = "datetime">Date Of Balance B/D</label>
-        <input type ="datetime-local" name ="datetime" id="datetime"/>
-        <label for ="December Balance B/D">December Balance B/D:</label>
-        <input id ="December Balance B/D" name ="December Balance B/D" type ="text"/>
-        <label for = "datetime">Date Of Balance B/D</label>
-        <input type ="datetime-local" name ="datetime" id="datetime"/><br/>
+        <div class ="row">
+            <div class="col-5">
+        <label for ="Balance For September B/D">Balance For September B/D:</label>
+        <div class="col-7">
+        <input type="text" name="Balance_For_September_B/D" id="Balance_For_September_B/D" value="{{ Balance_For_September_B/D }}">
+        </div>
+        </div>
+        <hr/>
+            <div class ="row">
+                <div class="col-5">
+           <label for ="September B/D">September B/D:</label>
+           <div class="col-7"></div>
+           <input type="date" name="September_B/D" id="September_B/D" value="{{ September_B/D }}">
+        </div>
+        </div>
+        <hr/>
+        <div class ="row">
+            <div class="col-5">
+        <label for ="Balance For October B/D">Balance For October B/D:</label>
+        <div class="col-7">
+        <input type="text" name="Balance_For_October_B/D" id="Balance_For_October_B/D" value="{{ Balance_For_October_B/D }}">
+        </div>
+        </div>
+        <hr/>
+            <div class ="row">
+                <div class="col-5">
+           <label for ="October B/D">October B/D:</label>
+           <div class="col-7"></div>
+           <input type="date" name="october_B/D" id="october_B/D" value="{{ october_B/D }}">
+        </div>
+        </div>
+        <hr/>
+        <div class ="row">
+            <div class="col-5">
+        <label for ="Balance For November B/D">Balance For November B/D:</label>
+        <div class="col-7">
+        <input type="text" name="Balance_For_November_Sales" id="Balance_For_November_B/D" value="{{ Balance_For_November_B/D }}">
+        </div>
+        </div>
+        <hr/>
+            <div class ="row">
+                <div class="col-5">
+           <label for ="November B/D">November B/D:</label>
+           <div class="col-7"></div>
+           <input type="date" name="november_B/D" id="november_B/D" value="{{ november_B/D }}">
+        </div>
+        </div>
+        <hr/>
+        <div class ="row">
+            <div class="col-5">
+        <label for ="Balance For December B/D">Balance For December B/D:</label>
+        <div class="col-7">
+        <input type="text" name="Balance_For_December_B/D" id="Balance_For_December_B/D" value="{{ Balance_For_December_B/D }}">
+        </div>
+        </div>
+        <hr/>
+            <div class ="row">
+                <div class="col-5">
+           <label for ="May B/D">December B/D:</label>
+           <div class="col-7"></div>
+           <input type="date" name="december_B/D" id="december_B/D" value="{{ december_B/D }}">
+        </div>
+        </div>
+        <hr/>
     </details>
     <footer>
         
