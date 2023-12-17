@@ -1,239 +1,291 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name ="keywords" content ="HTML 5, CSS 3, JavaScript, jquery, Angularjs"/>
-<meta name ="description" content ="Dynamic web development">
-<meta name = "author" content ="lawrence">
-<meta name = "viewport" content ="width=device-width,initial-scale=1.0">
-<title>float Layout</title>
-<link rel ="stylesheet" href ="font-awesome/css/font-awesome.min.css"/>
-<link rel ="stylesheet" href ="css/main.css">
-<style>
-    span{
-    color :red;
-    }
-
-    body{
-            background-color:white;
-    }
-
-    input{
-        width:10%;
-        padding: 12px;
-        margin: 8px;
-        border: none;
-        border-top: 3px solid blue;
-        border-bottom: 3px solid red;
-        background-color: green;
-        color: black;
-        text-align: center;
-
-    }
-
-    h1{
-        color:blueviolet;
-        text-align: center;
-    }
-h2{
-    color:red;
-    text-align: center;
-}
-
-label{
-    color:aqua;
-    text-align: center;
-}
-
-p{
-    color:brown;
-    text-align: center;
-}
-
-footer{
-    color:red;
-    text-align: center;
-}
-
-h3{
-    color:aquamarine;
-    text-align: center;
-}
-
-
-header {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 30px 10%;
-        }
- 
-        .navigate_links {
-            list-style: none;
-        }
- 
-        .navigate_links li {
-            display: inline-block;
-            padding: 10px 20px;
-        }
- 
-        .navigate_links li a {
-            transition: all 0.3s ease-in-out 0s;
-        }
- 
-        /* Add some transition to make navigation
-           bar attractive */
-        .navigate_links li a:hover {
-            color: greenyellow;
-            border: 2px solid blue;
-            box-shadow: 3px 3px 3px red, 3px 3px 3px blue;
-            border-radius: 8px;
-            margin: 10px;
-            padding: 12px;
-        }
-
-        a{
-	text-decoration: none;
-}
-
-
-</style>
-</head>
-<body>
-    <header>
+{% extends "homebase.html" %}
+{% block head %}
+    <meta name = "description" content="Home page for MIS data collection">
+{% endblock head %}
+{% block title %}<title>Home</title>{% endblock title %}
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mt-4">CUSTOMER INFORMATION FORM MMG LIMITED 2023 (MIS)</h1>
     
-        <nav>
-            <ul class="navigate_links">
-                <ul class="navigate_links">
-                    <li><a href ="employeerecords.html">Next</a></li>
-                  </ul>   
-                
-              </ul>   
-    </nav>
-    </header>      
+    <div class="msg">{{ msg }}</div>
+    <form action="{{ url_for('customer_information') }}" method="post"> 
+
+    <body>
+          
 <article>
-    <h1>CUSTOMER INFORMATION FORM (MIS)</h1>
     <form>
+        <div class ="row">
+            <div class="col-5">
         <label for ="lastname">Customer Lastname:</label>
-        <input id ="lastname" name ="lastname" type ="text"/>
-        <label for ="firstname">Customer Firstname:</label>
-        <input id ="firstname" name ="firstname" type ="text"/>
-        <label for ="middlename">Customer middlename:</label>
-        <input id ="middlename" name ="middlename" type ="text"/><br/>
-        <label for="dob">Date Of Birth</label>
-        <input type ="date" id ="dob" name ="dob">
-        <label for = "datetime">Customer Estimated delivery date</label>
-        <input type ="datetime-local" name ="datetime" id="datetime"/>
-        <label for ="address">Customer Address:</label>
-        <input id ="address" name ="address" type ="text"/>
-        <label for ="city">Residency:</label>
-        <input id ="city" name ="city" type ="text"/>
-        <label for ="state">State:</label>
-        <input id ="state" name ="state" type ="text"/>
-        <label for ="zip">zip:</label>
-        <input id ="zip" name ="zip" type ="text"/><br/>
-        <label for ="tel">Customer telephone Number</label>
-        <input type = "tel" name ="tel" id ="tel"/>
-        <label>Customer type of insurance:</label>
-        <input type ="radio" name ="Customer type of insurance" value ="private" id ="private">
-        <label for ="private">private</label>
-        <input type ="radio" name ="Customer type of insurance" value ="medicaid" id ="medicaid">
-        <label for ="medicaid">medicaid</label>
-        <input type ="radio" name ="Customer type of insurance" value ="medicare" id ="medicare">
-        <label for ="medicare">medicare</label>
-        <input type ="radio" name ="Customer type of insurance" value ="uninsured" id ="uninsured">
-        <label for ="uninsured">uninsured</label>
-        <input type ="radio" name ="Customer type of insurance" value ="unknown" id ="unknown">
-        <label for ="unknown">unknown</label><br/>
-        <label>Race:</label><br/>
-        <input type ="radio" name ="race" value ="American Indian/Alaskan Native" id ="American Indian/Alaskan Native">
-        <label for ="American Indian/Alaskan Native">American Indian/Alaskan Native</label>
-        <input type ="radio" name ="race" value ="Native Hawaiian/Pacific Islander" id ="Native Hawaiian/Pacific Islander">
-        <label for ="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander</label>
-        <input type ="radio" name ="race" value ="Asian" id ="Asian">
-        <label for ="Asian">Asian</label> 
-        <input type ="radio" name ="race" value ="White" id ="White">
-        <label for ="White">White</label>
-        <input type ="radio" name ="race" value ="Black/African Am." id ="Black/African Am.">
-        <label for ="Black/African Am.">Black/African Am.</label>
-        <input type ="radio" name ="race" value ="Unk" id ="Unk">
-        <label for ="Unk">Unk</label>
-        <input type ="radio" name ="race" value ="Other" id ="Other">
-        <label for ="Other">Other</label><br/>
-        <label>Hispanic:</label><br/>
-        <input type ="radio" name ="hispanic" value ="yes" id ="yes">
-        <label for ="Yes">Yes</label>
-        <input type ="radio" name ="hispanic" value ="No" id ="No">
-        <label for ="No">No</label>
-        <input type ="radio" name ="hispanic" value ="unk" id ="unk">
-        <label for ="unk">unk</label><br/>
-        <label for ="Country of Birth">Country of Birth:</label>
-        <input id ="Country of Birth" name ="Country of Birth" type ="text"/>
-        <label for ="primary Language">Customer Primary Language:</label>
-        <input id ="primary language" name ="primary language" type ="text"/><br/>
-        <label for ="check if interpreter is needed">check if interpreter is needed</label>
-        <input type ="radio" name ="check if interpreter is needed" value ="check if interpreter is needed" id ="check if interpreter is needed"><br/>
+    </div>
+    <div class="col-7">
+    <input type="text" name="last_name" id="last_name" value="{{ last_name}}">
     
+    </div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Firstname">Customer FirstName:</label>
+</div>
+<div class="col-7">
+<input type="text" name="first_name" id="first_name" value="{{ first_name}}">
 
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="middlename">Customer MiddleName:</label>
+</div>
+<div class="col-7">
+<input type="text" name="middle_name" id="middle_name" value="{{ middle_name}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="dob">Customer_date_of_birth:</label>
+</div>
+<div class="col-7">
+<input type="date" name="dob" id="dob" value="{{ dob}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Customer_Estimated_delivery_date">Customer Estimated delivery date:</label>
+</div>
+<div class="col-7">
+<input type="date" name="Customer_Estimated_delivery_date" id="Customer_Estimated_delivery_date" value="{{Customer_Estimated_delivery_date}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Address">Customer Address:</label>
+</div>
+<div class="col-7">
+<input type="text" name="Address" id="Address" value="{{ Address}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Residency_of_Customer">Residency of Customer:</label>
+</div>
+<div class="col-7">
+<input type="text" name="Residency" id="Residency" value="{{ Residency}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="State">Customer_State:</label>
+</div>
+<div class="col-7">
+<input type="text" name="city" id="city" value="{{ city}}">
+
+</div>
+</div>
+<hr/>
+
+<div class ="row">
+    <div class="col-5">
+<label for ="zip">Customer_zip:</label>
+</div>
+<div class="col-7">
+<input type="text" name="code" id="code" value="{{code}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="tel">Customer_telephone_Number:</label>
+</div>
+<div class="col-7">
+<input type="tel" name="tel" id="tel" value="{{tel}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="type of insurance">Customer_type_of_insurance:</label>
+</div>
+        <input type ="radio" name ="type of insurance" value ="private" id ="private">private<br/>
+        <input type ="radio" name ="type of insurance" value ="medicaid" id ="medicaid">medicaid<br/>
+        <input type ="radio" name ="type of insurance" value ="medicare" id ="medicare">medicare<br/>
+        <input type ="radio" name ="type of insurance" value ="uninsured" id ="uninsured">uninsured<br/>
+        <input type ="radio" name ="type of insurance" value ="unknown" id ="unknown">unknown<br/>
+    </div>
+</div>
+<hr/>
+        Customer_Race:<br/>
+        <input type ="radio" name ="Customer_Race" value ="American Indian/Alaskan Native" id ="American Indian/Alaskan Native">American Indian/Alaskan Native<br/>
+        <input type ="radio" name ="Customer_Race" value ="Native Hawaiian/Pacific Islander" id ="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander<br/>
+        <input type ="radio" name ="Customer_Race" value ="Asian" id ="Asian">Asian<br/>
+        <input type ="radio" name ="Customer_Race" value ="White" id ="White">White<br/>
+        <input type ="radio" name ="Customer_Race" value ="Black/African Am." id ="Black/African Am.">Black/African Am.<br/>
+        <input type ="radio" name ="Customer_Race" value ="Unk" id ="Unk">Unk<br/>
+        <input type ="radio" name ="Customer_Race" value ="Other" id ="Other">Other<br/>
+    </div>
+</div>
+<hr/>
+        Hispanic:<br/>
+        <input type ="radio" name ="hispanic" value ="yes" id ="yes">yes<br/>
+        <input type ="radio" name ="hispanic" value ="No" id ="No">No<br/>
+        <input type ="radio" name ="hispanic" value ="unk" id ="unk">unk<br/>
+    </div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Country_of_Birth">Customer_Country_of_Birth:</label>
+</div>
+<div class="col-7">
+<input type="text" name="Country_of_Birth" id="Country_of_Birth" value="{{Country_of_Birth}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Customer_Primary_Language">Customer_Primary_Language:</label>
+</div>
+<div class="col-7">
+<input type="text" name="Primary_Language" id="Primary_Language" value="{{Primary_Language}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="check_if_interpreter_is_needed">check if interpreter is needed:</label>
+</div>
+<div class="col-7">
+<input type="text" name="check_if_interpreter_is_needed" id="check_if_interpreter_is_needed" value="{{check_if_interpreter_is_needed}}">
+
+</div>
+</div>
+<hr/>
 </form>
 </article>
 <aside>
     <h2>GUARANTOR INFORMATION</h2>
 <form>
-    <label for ="address">Address:</label>
-    <input id ="address" name ="address" type ="text"/>
-    <label for ="city">city:</label>
-    <input id ="city" name ="city" type ="text"/>
-    <label for ="state">State:</label>
-    <input id ="state" name ="state" type ="text"/>
+    <div class ="row">
+        <div class="col-5">
+    <label for ="Address">Guarantor_Address:</label>
+    </div>
+    <div class="col-7">
+    <input type="text" name="Address" id="Address" value="{{ Address}}">
+    
+    </div>
+    </div>
+    <hr/>
+    <div class ="row">
+        <div class="col-5">
+    <label for ="Residency">Guarantor_Residency:</label>
+    </div>
+    <div class="col-7">
+    <input type="text" name="Residency" id="Residency" value="{{ Residency}}">
+    
+    </div>
+    </div>
+    <hr/>
+    <div class ="row">
+        <div class="col-5">
+    <label for ="State">Guarantor_State:</label>
+    </div>
+    <div class="col-7">
+    <input type="text" name="city" id="city" value="{{ city}}">
+    
+    </div>
+    </div>
+    <hr/>
+    
+    <div class ="row">
+        <div class="col-5">
     <label for ="zip">zip:</label>
-    <input id ="zip" name ="zip" type ="text"/><br/>
-    <label for ="tel">telephone</label>
-    <input type = "tel" name ="tel" id ="tel"/>   
+    </div>
+    <div class="col-7">
+    <input type="text" name="code" id="code" value="{{code}}">
+    
+    </div>
+    </div>
+    <hr/>
+    <div class ="row">
+        <div class="col-5">
+    <label for ="tel">Guarantor_Telephone_Number:</label>
+    </div>
+    <div class="col-7">
+    <input type="tel" name="tel" id="tel" value="{{tel}}">
+    
+    </div>
+    </div>
+    <hr/>   
 
 </form>
 </aside>
 <details>
 <summary>read more</summary> 
-<label>type of insurance:</label>
-        <input type ="radio" name ="type of insurance" value ="private" id ="private">
-        <label for ="private">private</label>
-        <input type ="radio" name ="type of insurance" value ="medicaid" id ="medicaid">
-        <label for ="medicaid">medicaid</label>
-        <input type ="radio" name ="type of insurance" value ="medicare" id ="medicare">
-        <label for ="medicare">medicare</label>
-        <input type ="radio" name ="type of insurance" value ="uninsured" id ="uninsured">
-        <label for ="uninsured">uninsured</label>
-        <input type ="radio" name ="type of insurance" value ="unknown" id ="unknown">
-        <label for ="unknown">unknown</label><br/>
-        <label>Race:</label><br/>
-        <input type ="radio" name ="race" value ="American Indian/Alaskan Native" id ="American Indian/Alaskan Native">
-        <label for ="American Indian/Alaskan Native">American Indian/Alaskan Native</label>
-        <input type ="radio" name ="race" value ="Native Hawaiian/Pacific Islander" id ="Native Hawaiian/Pacific Islander">
-        <label for ="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander</label>
-        <input type ="radio" name ="race" value ="Asian" id ="Asian">
-        <label for ="Asian">Asian</label> 
-        <input type ="radio" name ="race" value ="White" id ="White">
-        <label for ="White">White</label>
-        <input type ="radio" name ="race" value ="Black/African Am." id ="Black/African Am.">
-        <label for ="Black/African Am.">Black/African Am.</label>
-        <input type ="radio" name ="race" value ="Unk" id ="Unk">
-        <label for ="Unk">Unk</label>
-        <input type ="radio" name ="race" value ="Other" id ="Other">
-        <label for ="Other">Other</label><br/>
-        <label>Hispanic:</label><br/>
-        <input type ="radio" name ="hispanic" value ="yes" id ="yes">
-        <label for ="Yes">Yes</label>
-        <input type ="radio" name ="hispanic" value ="No" id ="No">
-        <label for ="No">No</label>
-        <input type ="radio" name ="hispanic" value ="unk" id ="unk">
-        <label for ="unk">unk</label><br/>
-        <label for ="Country of Birth">Country of Birth:</label>
-        <input id ="Country of Birth" name ="Country of Birth" type ="text"/>
-        <label for ="primary Language">Primary Language:</label>
-        <input id ="primary language" name ="primary language" type ="text"/><br/>
-        <label for ="check if interpreter is needed">check if interpreter is needed</label>
-        <input type ="radio" name ="check if interpreter is needed" value ="check if interpreter is needed" id ="check if interpreter is needed"><br/>
+<div class ="row">
+    <div class="col-5">
+<label for ="type_of_insurance">Guarantor_Type_of_insurance:</label>
+</div>
+        <input type ="radio" name ="type of insurance" value ="private" id ="private">private<br/>
+        <input type ="radio" name ="type of insurance" value ="medicaid" id ="medicaid">medicaid<br/>
+        <input type ="radio" name ="type of insurance" value ="medicare" id ="medicare">medicare<br/>
+        <input type ="radio" name ="type of insurance" value ="uninsured" id ="uninsured">uninsured<br/>
+        <input type ="radio" name ="type of insurance" value ="unknown" id ="unknown">unknown<br/>
+    </div>
+</div>
+<hr/>
+Guarantor_Race:<br/>
+        <input type ="radio" name ="race" value ="American Indian/Alaskan Native" id ="American Indian/Alaskan Native">American Indian/Alaskan Native<br/>
+        <input type ="radio" name ="race" value ="Native Hawaiian/Pacific Islander" id ="Native Hawaiian/Pacific Islander">Native Hawaiian/Pacific Islander<br/>
+        <input type ="radio" name ="race" value ="Asian" id ="Asian">Asian<br/>
+        <input type ="radio" name ="race" value ="White" id ="White">White<br/>
+        <input type ="radio" name ="race" value ="Black/African Am." id ="Black/African Am.">Black/African Am.<br/>
+        <input type ="radio" name ="race" value ="Unk" id ="Unk">Unk<br/>
+        <input type ="radio" name ="race" value ="Other" id ="Other">Other<br/>
+    </div>
+</div>
+<hr/>
+Guarantor_Hispanic:<br/>
+        <input type ="radio" name ="Guarantor_hispanic" value ="yes" id ="yes">yes<br/>
+        <input type ="radio" name ="Guarantor_hispanic" value ="No" id ="No">No<br/>
+        <input type ="radio" name ="Guarantor_hispanic" value ="unk" id ="unk">unk<br/>
+    </div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Guarantor_Country_of_Birth">Country of Birth:</label>
+</div>
+<div class="col-7">
+<input type="text" name="Country_of_Birth" id="Country_of_Birth" value="{{Country_of_Birth}}">
+
+</div>
+</div>
+<hr/>
+<div class ="row">
+    <div class="col-5">
+<label for ="Guarantor_Primary_Language">Primary Language:</label>
+</div>
+<div class="col-7">
+<input type="text" name="Primary_Language" id="Primary_Language" value="{{Primary_Language}}">
+
+</div>
+</div>
+<hr/>
     
 
 </details>
@@ -243,3 +295,4 @@ header {
 </body>
 </html>
 
+ 
